@@ -12,7 +12,9 @@ public class AskData {
 
         System.out.println("Introducir datos del cilindro: ");
         System.out.print("Radio: ");
+
         radio = scanner.nextDouble();
+
         System.out.print("Altura: ");
         height = scanner.nextDouble();
         area = Math.PI * radio * height;

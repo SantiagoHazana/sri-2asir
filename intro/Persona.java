@@ -2,10 +2,12 @@ package intro;
 
 public class Persona {
 
+    // Variables o parametros de clase
     private String name;
     private String surname;
     private int age;
 
+    // Metodos de clase
     public String getName() {
         return name;
     }
@@ -48,6 +50,8 @@ public class Persona {
         santiago2.setName("Santiago");
         santiago2.setSurname("Hazaña");
         santiago2.setAge(25);
+
+
         System.out.println(santiago.equals(marina));
         System.out.println(santiago2.equals(santiago));
         System.out.println("Mi nombre es " + santiago.getName() + " " + santiago.getSurname() + " y tengo " + santiago.getAge() + " años");
