@@ -1,4 +1,4 @@
-package intro.relacion1;
+package relacion1;
 
 import java.util.Scanner;
 
@@ -32,8 +32,10 @@ public class Ejercicio1 {
             x2 = (float) ((-b - Math.sqrt(sqrt))/ (2*a));
             if(x1 == x2){
                 System.out.println("Las raices son iguales, su valor es x1=x2= " + x1);
+                System.out.printf("Las raices son iguales, su valor es %5.2f", x1);
             }else{
                 System.out.println("Las raices son x1= " + x1 + " y x2= " + x2);
+                System.out.printf("Las raices son x1=%5.2f y x2=%5.2f", x1, x2);
             }
         }
     }

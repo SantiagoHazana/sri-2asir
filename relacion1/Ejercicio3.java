@@ -1,4 +1,4 @@
-package intro.relacion1;
+package relacion1;
 
 import java.util.Scanner;
 
@@ -12,5 +12,6 @@ public class Ejercicio3 {
         radio = scanner.nextFloat();
         longitud = (float) (2 * Math.PI * radio);
         System.out.println("La longitud de la circunferencia es: " + longitud);
+        System.out.printf("La longitud de la circunferencia con radio %5.2f es: %5.2f", radio, longitud);
     }
 }

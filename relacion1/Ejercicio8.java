@@ -1,4 +1,4 @@
-package intro.relacion1;
+package relacion1;
 
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ public class Ejercicio8 {
         if (num1 > num2){
             System.out.println(num1 + " es el mayor");
         }else if (num2 > num1){
-            System.out.println(num2 + " es el mejor");
+            System.out.println(num2 + " es el mayor");
         }else{
             System.out.println("Son iguales");
         }

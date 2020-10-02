@@ -1,4 +1,4 @@
-package intro.relacion1;
+package relacion1;
 
 import java.util.Scanner;
 
