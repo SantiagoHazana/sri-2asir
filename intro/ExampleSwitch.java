@@ -44,8 +44,8 @@ public class ExampleSwitch {
         }
 
         // Ejemplo con meses
-        Mes mes = Mes.AGOSTO;
-        int dias;
+        Mes mes = Mes.FEBRERO;
+        int dias = 0;
 
         switch (mes){
             case FEBRERO:

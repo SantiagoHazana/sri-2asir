@@ -1,9 +1,10 @@
-package relacion1;
+package relacion2;
 
 import java.util.Scanner;
 
-public class Primos {
+public class Ejercicio1 {
 
+    // Funcion o metodo para saber si un numero es primo
     public static boolean primo(int num){
 
         // Con while
@@ -18,10 +19,10 @@ public class Primos {
         return true;
     }
 
+    // Funcion o metodo para saber si un numero es primo
     public static boolean primo2(int num){
 
         // Con for
-
         for (int i = 2; (i*i) < num; i++) {
             if (num%i == 0)
                 return false;
@@ -29,6 +30,7 @@ public class Primos {
         return true;
     }
 
+    // Funcion o metodo para saber todos los numeros primos hasta el numero dado
     public static String primosString(int num){
         String res = "";
 
@@ -41,6 +43,7 @@ public class Primos {
         return res;
     }
 
+    // Funcion o metodo para saber la cantidad de numeros primos hasta un numero dado
     public static int numPrimos(int num){
         int res = 0;
 
@@ -61,6 +64,7 @@ public class Primos {
         num = scanner.nextInt();
 
         System.out.printf(primo2(num) ? "El numero %d es primo\n":"El numero %d no es primo\n", num);
+
         System.out.printf("Hasta el numero %d hay %d numeros primos y son: \n", num, numPrimos(num));
         System.out.printf(primosString(num));
     }

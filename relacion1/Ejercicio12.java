@@ -7,7 +7,7 @@ public class Ejercicio12 {
 
     public static boolean palindrome(Integer num){
         for (int i = 0; i < num.toString().length()/2; i++) {
-            if (num.toString().charAt(0) != num.toString().charAt(num.toString().length()-1)){
+            if (num.toString().charAt(i) != num.toString().charAt(num.toString().length()-1-i)){
                 return false;
             }
         }
