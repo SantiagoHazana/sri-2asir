@@ -7,6 +7,7 @@ public class Ejercicio4 {
         Scanner scanner = new Scanner(System.in);
         float num1;
         float num2;
+
         System.out.print("Ingrese un numero: ");
         num1 = scanner.nextFloat();
         System.out.print("Ingrese otro numero: ");
