@@ -4,12 +4,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
-import java.util.Scanner;
 
 public class Ejercicio13Factorial {
 
-    public static BigInteger factorial(long n){
-        return (n == 1 || n == 0) ? BigInteger.ONE : BigInteger.valueOf(n).multiply(factorial(n - 1));
+    private static BigInteger factorialSecuantial(BigInteger n){
+        BigInteger result = BigInteger.ONE;
+
+        while (!n.equals(BigInteger.ZERO)) {
+            result = result.multiply(n);
+            n = n.subtract(BigInteger.ONE);
+        }
+
+        return result;
+    }
+
+    public static BigInteger factorialRecursive(long n){
+        return (n == 1 || n == 0) ? BigInteger.ONE : BigInteger.valueOf(n).multiply(factorialRecursive(n - 1));
     }
 
     public static void main(String[] args) {
@@ -28,7 +38,8 @@ public class Ejercicio13Factorial {
         }while (num < 0);
 
 
-        System.out.printf("El factorial de %d es %d", num, factorial(num));
+//        System.out.printf("El factorial de %d es %d\n", num, factorialRecursive(num));
+        System.out.printf("El factorial de %d es %d\n", num, factorialSecuantial(BigInteger.valueOf(num)));
     }
 
 }
