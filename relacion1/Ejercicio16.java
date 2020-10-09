@@ -42,7 +42,7 @@ public class Ejercicio16 {
                     number += "";
                     break;
                 case 1:
-                    number += ("diez");
+                    number += ("diesi");
                     break;
                 case 2:
                     number += ("veinti");
