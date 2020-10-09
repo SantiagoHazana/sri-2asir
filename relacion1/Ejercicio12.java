@@ -5,28 +5,30 @@ import java.util.Scanner;
 public class Ejercicio12 {
 
 
-    public static boolean palindrome(Integer num){
-        for (int i = 0; i < num.toString().length()/2; i++) {
-            if (num.toString().charAt(i) != num.toString().charAt(num.toString().length()-1-i)){
-                return false;
-            }
+    public static boolean palindrome(int num){
+        return num == reverse(num);
+    }
+
+    private static int reverse(int num){
+        int n;
+        int inverse = 0;
+
+        while (num != 0){
+            n = num%10;
+            num /= 10;
+            inverse = inverse * 10 + n;
         }
-        return true;
+
+        return inverse;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int num;
 
-        do {
-            System.out.println("Ingrese un numero entre 0 y 9999: ");
-            num = scanner.nextInt();
-        }while (num < 0 || num > 9999);
+        System.out.println("Ingrese un numero entre 0 y 9999: ");
+        num = scanner.nextInt();
 
-        if (palindrome(num)){
-            System.out.println("El numero SI ES capicua");
-        }else{
-            System.out.println("El numero NO ES capicua");
-        }
+        System.out.printf(palindrome(num) ? "El numero %d es capicula":"El numero %d no es capicua", num);
     }
 }

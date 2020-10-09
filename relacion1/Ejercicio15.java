@@ -32,7 +32,7 @@ public class Ejercicio15 {
 
     private static String nextTime(Integer hours, Integer minutes, Integer seconds) {
         seconds++;
-        if (seconds == 59){
+        if (seconds == 59 || seconds == 60){
             seconds = 0;
             minutes ++;
         }

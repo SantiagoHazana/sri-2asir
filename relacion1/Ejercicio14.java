@@ -41,14 +41,7 @@ public class Ejercicio14 {
         int month;
         int year;
 
-        System.out.print("Introducir el dia: ");
-        days = scanner.nextInt();
-        System.out.print("Introducir el mes: ");
-        month = scanner.nextInt();
-        System.out.print("Introducir el año: ");
-        year = scanner.nextInt();
-
-        while (!checkDate(days, month, year)){
+        do{
             System.out.println("Fecha incorrecta, por favor intente nuevamente.");
             System.out.print("Introducir el dia: ");
             days = scanner.nextInt();
@@ -56,7 +49,7 @@ public class Ejercicio14 {
             month = scanner.nextInt();
             System.out.print("Introducir el año: ");
             year = scanner.nextInt();
-        }
+        }while (!checkDate(days, month, year));
 
         System.out.println("La fecha introducida es correcta.");
 

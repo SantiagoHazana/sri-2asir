@@ -20,22 +20,10 @@ public class Ejercicio11_InvertNumber {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int num;
-        String numString = "";
 
-        //do {
-            System.out.println("Ingrese un numero: ");
-            num = scanner.nextInt();
-        //}while (num < 0 || num > 9999);
+        System.out.println("Ingrese un numero: ");
+        num = scanner.nextInt();
 
-        /*
-        // Hecho con String
-        for (int i = Integer.toString(num).length()-1; i >= 0; i--) {
-            numString += Integer.toString(num).charAt(i);
-        }
-        System.out.println("El numero ingresado al reves es: " + numString);
-        */
-
-        // Hecho matematicamente
         System.out.printf("El number %d inverso es %d", num, invertNumber(num));
     }
 }
