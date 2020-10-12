@@ -7,7 +7,7 @@ import java.math.BigInteger;
 
 public class Ejercicio13Factorial {
 
-    private static BigInteger factorialSecuantial(BigInteger n){
+    private static BigInteger factorialSequential(BigInteger n){
         BigInteger result = BigInteger.ONE;
 
         while (!n.equals(BigInteger.ZERO)) {
@@ -39,7 +39,7 @@ public class Ejercicio13Factorial {
 
 
 //        System.out.printf("El factorial de %d es %d\n", num, factorialRecursive(num));
-        System.out.printf("El factorial de %d es %d\n", num, factorialSecuantial(BigInteger.valueOf(num)));
+        System.out.printf("El factorial de %d es %d\n", num, factorialSequential(BigInteger.valueOf(num)));
     }
 
 }

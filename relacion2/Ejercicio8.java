@@ -1,22 +1,37 @@
 package relacion2;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Ejercicio8 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int numero;
+        BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in));
+        int numero = 0;
         int contador = 0; // Llevar la cuenta de cuantos numeros se introducen
         float total = 0; // Llevara el total de los numeros introducidos, para luego sacar la media
-
-        System.out.printf("Ingrese un numero: ");
-        numero = scanner.nextInt();
+        boolean correct;
 
         while (numero >= 0){
-            total = total + numero;
-            contador++;
-            System.out.printf("Ingrese un numero: ");
-            numero = scanner.nextInt();
+            try {
+                correct = true;
+                System.out.printf("Ingrese un numero: ");
+                numero = Integer.parseInt(scanner.readLine());
+            }catch (IOException e) {
+                correct = false;
+                System.out.println("Error al leer del teclado");
+            } catch (NumberFormatException e){
+                correct = false;
+                System.out.println("Ingrese un numero!!!");
+            }
+
+            if (numero >= 0 && correct){
+                total = total + numero;
+                contador++;
+            }
+
+
         }
 
         total = total / contador;

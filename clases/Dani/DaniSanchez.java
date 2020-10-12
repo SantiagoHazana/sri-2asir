@@ -1,4 +1,4 @@
-package clases;
+package clases.Dani;
 
 import java.util.Scanner;
 
@@ -47,14 +47,14 @@ public class DaniSanchez{
         // Una manera de sumarlos
 
         System.out.print("Introduzca un numero: ");
-        num = scanner.nextInt();
+        num = scanner.nextInt(); // si metemos 5, num = 5
         System.out.print("Introduzca otro numero: ");
-        num2 = scanner.nextInt();
+        num2 = scanner.nextInt(); // si metemos 3, num2 = 3
 
         resultado = num + num2;
         System.out.println("La suma de los dos numeros es: " + resultado );
         // Otra manera de sumarlos
-        resultado = suma3(num, num2);
+        resultado = suma3(num, num2);// cuando llamamos a suma3(), le pasamos 5 y 3.
         System.out.println("La suma de los dos numeros es: " + resultado );
     }
 

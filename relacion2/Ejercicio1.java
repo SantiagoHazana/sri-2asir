@@ -1,5 +1,8 @@
 package relacion2;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Ejercicio1 {
@@ -57,11 +60,24 @@ public class Ejercicio1 {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int num;
+        BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in));
+        int num = 0;
+        boolean incorrect = true;
 
-        System.out.printf("Ingrese un numero para comprobar si es primo y dar los numeros primos antes de el: ");
-        num = scanner.nextInt();
+        do{
+            try {
+                incorrect = false;
+                System.out.printf("Ingrese un numero para comprobar si es primo y dar los numeros primos antes de el: ");
+                num = Integer.parseInt(scanner.readLine());
+            } catch (IOException e) {
+                incorrect = true;
+                System.out.println("Error al leer del teclado");
+            } catch (NumberFormatException e){
+                incorrect = true;
+                System.out.println("Ingrese un numero!");
+            }
+        }while (incorrect);
+
 
         System.out.printf(primo2(num) ? "El numero %d es primo\n":"El numero %d no es primo\n", num);
 

@@ -1,29 +1,46 @@
 package relacion2;
 
-import java.lang.reflect.Array;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
 
 public class Ejercicio14 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<Integer> pos = new ArrayList<>();
         ArrayList<Integer> neg = new ArrayList<>();
+        int num = 0;
         int zeros = 0;
+        int count = 0;
+        boolean correct;
 
-        for (int i = 0; i < 10; i++) {
-            System.out.printf("Ingrese un numero: ");
-            int num = scanner.nextInt();
-            if (num > 0) {
-                pos.add(num);
-            } else if (num < 0){
-                neg.add(num);
-            } else {
-                zeros++;
+        while (count < 10) {
+            try {
+                correct = true;
+                System.out.printf("Ingrese un numero: ");
+                num = Integer.parseInt(scanner.readLine());
+            }catch (IOException e) {
+                correct = false;
+                System.out.println("Error al leer del teclado");
+            } catch (NumberFormatException e){
+                correct = false;
+                System.out.println("Ingrese un numero!!!");
             }
+            if (correct){
+                if (num > 0) {
+                    pos.add(num);
+                } else if (num < 0){
+                    neg.add(num);
+                } else {
+                    zeros++;
+                }
+                count++;
+            }
+
         }
+
+
         float totalPos = 0;
         if (pos.size() > 0){
             totalPos = pos.stream().mapToInt(n -> n).sum();
