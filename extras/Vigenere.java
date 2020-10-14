@@ -11,6 +11,7 @@ public class Vigenere {
 
     Map<Integer, Character> table;
 
+    // Constructor that initializes the words array and table map
     public Vigenere(){
         words = new ArrayList<>();
         table = new HashMap<>(26);
@@ -20,6 +21,9 @@ public class Vigenere {
         }
     }
 
+    /* Helpers methods */
+
+    // Generates the keyphrase depending on the length of the phrase
     private String generateKeyPhrase(String keyword, String phrase){
         int length = keyword.length();
 
@@ -37,27 +41,15 @@ public class Vigenere {
         return keyword;
     }
 
+    // Cuts the phrase given by the spaces and stores it in words array
     private void cutPhrase(String phrase){
         words.clear();
         this.words.addAll(Arrays.asList(phrase.split("\\s+")));
     }
 
-    public String encodeWithTable(String phrase, String key){
-        phrase = phrase.toUpperCase();
-        key = key.toUpperCase();
-        phrase = phrase.replaceAll("\\s", "");
-        key = generateKeyPhrase(key, phrase);
-        String encoded = "";
+    /* Encoding methods */
 
-        for (int i = 0; i < phrase.length(); i++) {
-            int n = (phrase.charAt(i) + key.charAt(i))%26;
-
-            encoded += table.get(n);
-        }
-
-        return encoded.toLowerCase();
-    }
-
+    // This method encodes a single word or phrase removing spaces, using the ASCII table
     public String encode(String phrase, String key){
         phrase = phrase.toUpperCase();
         key = key.toUpperCase();
@@ -77,6 +69,24 @@ public class Vigenere {
         return encoded.toLowerCase();
     }
 
+    // This method encodes a single word of phrase removing spaces using the map table defined above
+    public String encodeWithTable(String phrase, String key){
+        phrase = phrase.toUpperCase();
+        key = key.toUpperCase();
+        phrase = phrase.replaceAll("\\s", "");
+        key = generateKeyPhrase(key, phrase);
+        String encoded = "";
+
+        for (int i = 0; i < phrase.length(); i++) {
+            int n = (phrase.charAt(i) + key.charAt(i))%26;
+
+            encoded += table.get(n);
+        }
+
+        return encoded.toLowerCase();
+    }
+
+    // Encodes with the method encode but word by word
     public String encodeByWord(String phrase, String key){
         phrase = phrase.toUpperCase();
         cutPhrase(phrase);
@@ -88,6 +98,7 @@ public class Vigenere {
         return encoded;
     }
 
+    // Encodes with the method encodeWithTable but word by word
     public String encodeByWordWithTable(String phrase, String key){
         phrase = phrase.toUpperCase();
         cutPhrase(phrase);
@@ -99,22 +110,9 @@ public class Vigenere {
         return encoded;
     }
 
-    public String decodeWithTable(String encoded, String key) {
-        key = key.toUpperCase();
-        encoded = encoded.toUpperCase();
-        key = generateKeyPhrase(key, encoded);
-        encoded = encoded.replaceAll("\\s", "");
-        String decoded = "";
+    /* Decoding methods */
 
-        for (int i = 0; i < encoded.length(); i++) {
-            int n = (encoded.charAt(i) - key.charAt(i) + 26) % 26;
-
-            decoded += table.get(n);
-        }
-
-        return decoded.toLowerCase();
-    }
-
+    // This method decodes a single word or phrase, without spaces, using the ASCII table
     public String decode(String encoded, String key){
         key = key.toUpperCase();
         encoded = encoded.toUpperCase();
@@ -133,6 +131,24 @@ public class Vigenere {
         return decoded.toLowerCase();
     }
 
+    // This method decodes a single word of phrase, without spaces, using the map table defined above
+    public String decodeWithTable(String encoded, String key) {
+        key = key.toUpperCase();
+        encoded = encoded.toUpperCase();
+        key = generateKeyPhrase(key, encoded);
+        encoded = encoded.replaceAll("\\s", "");
+        String decoded = "";
+
+        for (int i = 0; i < encoded.length(); i++) {
+            int n = (encoded.charAt(i) - key.charAt(i) + 26) % 26;
+
+            decoded += table.get(n);
+        }
+
+        return decoded.toLowerCase();
+    }
+
+    // Decodes with the method decode but word by word
     public String decodeByWord(String encoded, String key){
         encoded = encoded.toUpperCase();
         cutPhrase(encoded);
@@ -144,6 +160,8 @@ public class Vigenere {
 
         return decoded;
     }
+
+    // Encodes with the method decodeWithTable but word by word
     public String decodeByWordWithTable(String encoded, String key){
         encoded = encoded.toUpperCase();
         cutPhrase(encoded);
