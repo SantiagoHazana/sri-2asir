@@ -95,14 +95,13 @@ public class Ejercicio13Factorial {
         }while (num < 0);
 
 
-//        System.out.printf("El factorial de %d es %d\n", num, factorialRecursive(num));
         // Calculate the factorial and record time to do it.
         startTime = System.currentTimeMillis();
         result = factorialSequential(BigInteger.valueOf(num));
         System.out.printf("El factorial de %d es %d\n", num, result);
         endTime = System.currentTimeMillis();
 
-        // Calculate time in mimutes and seconds
+        // Calculate time in minutes and seconds
         long totalMilli = endTime - startTime;
         long endTimeMin = (endTime - startTime)/1000/60;
         long endTimeSec = (totalMilli/1000)-(endTimeMin*60);

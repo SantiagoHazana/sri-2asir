@@ -9,23 +9,20 @@ public class Ejercicio7 {
         BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in));
         int total = 0;
         int num = -1;
-        boolean correct;
 
         while (num != 0){
             try {
-                correct = true;
                 System.out.printf("Ingrese un numero para ir sumandolo, ingrese 0 para terminar: ");
                 num = Integer.parseInt(scanner.readLine());
+                if (num != 0)
+                    total += num;
             }catch (IOException e) {
-                correct = false;
                 System.out.println("Error al leer del teclado");
             } catch (NumberFormatException e){
-                correct = false;
                 System.out.println("Ingrese un numero!!!");
             }
 
-            if (num != 0 && correct)
-                total += num;
+
 
         }
 

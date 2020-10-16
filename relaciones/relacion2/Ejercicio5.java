@@ -13,18 +13,16 @@ public class Ejercicio5 {
 
         while (num > 0){
             try {
-                correct = true;
                 System.out.printf("Ingrese un numero: ");
                 num = Integer.parseInt(scanner.readLine());
+                if (num > 0)
+                    count++;
             }catch (IOException e) {
-                correct = false;
                 System.out.println("Error al leer del teclado");
             } catch (NumberFormatException e){
-                correct = false;
                 System.out.println("Ingrese un numero!!!");
             }
-            if (num > 0 && correct)
-                count++;
+
 
         }
 
