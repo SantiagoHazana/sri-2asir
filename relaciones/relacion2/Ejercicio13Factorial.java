@@ -82,6 +82,8 @@ public class Ejercicio13Factorial {
 
         long startTime;
         long endTime;
+        long startTimeNano;
+        long endTimeNano;
 
         do {
             try {
@@ -97,22 +99,26 @@ public class Ejercicio13Factorial {
 
         // Calculate the factorial and record time to do it.
         startTime = System.currentTimeMillis();
+        startTimeNano = System.nanoTime();
         result = factorialSequential(BigInteger.valueOf(num));
         System.out.printf("El factorial de %d es %d\n", num, result);
         endTime = System.currentTimeMillis();
+        endTimeNano = System.nanoTime();
 
         // Calculate time in minutes and seconds
         long totalMilli = endTime - startTime;
         long endTimeMin = (endTime - startTime)/1000/60;
         long endTimeSec = (totalMilli/1000)-(endTimeMin*60);
 
-        System.out.printf("\nTime to calculate factorial of %d: %d min %d sec\n", num, endTimeMin, endTimeSec);
+        System.out.printf("\nTime to calculate factorial of %d: %d min %d sec o %d milisegundos o %d nanosegundos\n", num, endTimeMin, endTimeSec, endTime-startTime, endTimeNano-startTimeNano);
 
         // Calculate the number of digits of the factorial number and the time to do it
         startTime = System.currentTimeMillis();
+        startTimeNano = System.nanoTime();
         int digits = log10(result);
         endTime = System.currentTimeMillis();
-        System.out.printf("\nEl factorial de %d tiene %d digitos y tardo %d milisegundos en calcularlo.\n", num, digits, (endTime - startTime));
+        endTimeNano = System.nanoTime();
+        System.out.printf("\nEl factorial de %d tiene %d digitos y tardo %d milisegundos o %d nanosegundos en calcularlo.\n", num, digits, (endTime - startTime), endTimeNano - startTimeNano);
 
 
     }
