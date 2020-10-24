@@ -13,19 +13,24 @@ public class Luhn {
     public boolean checkNumber(String number){
 //        cutNumberDigits(Long.parseLong(number));
         cutNumbersString(number);
+//        printNumbers(numbers);
         for (int i = 1; i < numbers.size(); i+=2) {
             int num = numbers.get(i)*2;
             numbers.remove(i);
             numbers.add(i, num >= 10 ? (num%10)+(num/10):num);
         }
-        return numbers.stream().mapToInt(n -> n).sum()%10 == 0;
+//        printNumbers(numbers);
+//        System.out.println(numbers.stream().mapToInt(n -> n).sum());
+        return (numbers.stream().mapToInt(n -> n).sum())%10 == 0;
     }
 
     public String getNextLuhn(String number){
         String next = number;
-        for (int i = 1; i < 10; i++) {
-            if (checkNumber(next.concat(String.valueOf(i))))
-                return next.concat(String.valueOf(i));
+        for (int i = 0; i < 10; i++) {
+            next = next.concat(String.valueOf(i));
+            System.out.println(next);
+            if (checkNumber(next))
+                return next;
 
             next = number;
         }
