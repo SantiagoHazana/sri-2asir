@@ -6,7 +6,7 @@ public class Test {
 
     public static void main(String[] args) {
         Fibonacci fibonacci = new Fibonacci();
-        long number = 50;
+        long number = 40;
         long fib;
         BigInteger fibBig;
         long startTime;
