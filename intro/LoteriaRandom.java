@@ -64,47 +64,29 @@ public class LoteriaRandom {
     }
 
     public static void main(String[] args) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int simulations = -1;
+        if (args.length==0){
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            while (simulations<=0 || simulations>1000){
+                try {
+                    System.out.printf("Ingrese el numero de repeticiones: ");
+                    simulations = Integer.parseInt(reader.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (NumberFormatException e){
+                    System.out.println("Ingrese un numero!!!");
+                }
+            }
+        }else{
+            simulations = Integer.parseInt(args[0]);
+        }
+
         Random random = new Random();
         long count = 0;
         ArrayList<ArrayList<Long>> data = new ArrayList<ArrayList<Long>>();
-//        Random random2 = new Random(1234);
-//        Random random3 = new Random(1234);
-//
-//        System.out.printf("Los numeros con Math.random son: ");
-//        for (Integer i : loteria1()) {
-//            System.out.printf("%2d ", i);
-//        }
-//
-//        System.out.println();
-//
-//        System.out.printf("Los numeros con Random() son: ");
-//        for (Integer i : loteria2(random)) {
-//            System.out.printf("%2d ", i);
-//        }
-//
-//        System.out.println();
-//
-//        System.out.printf("Los numeros con Random(1234) son: ");
-//        for (Integer i : loteria3(random2)) {
-//            System.out.printf("%2d ", i);
-//        }
-//
-//        System.out.println();
-//
-//        System.out.printf("Los numeros con Random(1234) son: ");
-//        for (Integer i : loteria4(random3)) {
-//            System.out.printf("%2d ", i);
-//        }
         ArrayList<Integer> numsLoteria;
         ArrayList<Integer> numsJugador = null;
-        int simulations = 0;
-        try {
-            System.out.printf("Ingrese el numero de repeticiones: ");
-            simulations = Integer.parseInt(reader.readLine());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
         for (int i = 0; i < simulations; i++) {
             numsLoteria = loteria2();
