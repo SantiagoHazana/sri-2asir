@@ -1,6 +1,6 @@
 package clases.Sara;
 
-public class recursividad {
+public class Recursividad {
 
     public static long fibonacciRec(long num){
         // en una sola linea -> return num<=1 ? num:fibonacciRec(num-1)+fibonacciRec(num-2);
@@ -44,6 +44,10 @@ public class recursividad {
         return base * potencia(base,expo-1);
     }
 
+    public static void imprimirNumeros2(int num){
+
+    }
+
     public static void imprimirNumeros(int num){
 
         if (num == 1)
@@ -60,11 +64,11 @@ public class recursividad {
 
         int n = 5;
 
-//        for (long counter = 1; counter <= n; counter++){
-//            System.out.printf("%d! = %s = %d\n", counter, multiplicationsString(counter), factorialRec(counter));
-//        }
+        for (long i = 1; i <= n; i++){
+            System.out.printf("%d! = %s = %d\n", i, multiplicationsString(i), factorialRec(i));
+        }
 
-        imprimirNumeros(n);
+//        imprimirNumeros(n);
     }
 
 }

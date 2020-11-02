@@ -1,4 +1,4 @@
-package clases;
+package clases.Marine;
 
 public class Marine {
     public static void main(String[] args) {

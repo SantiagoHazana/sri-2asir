@@ -1,5 +1,6 @@
 package clases.Sara;
 
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class sara03_10 {
@@ -59,6 +60,9 @@ public class sara03_10 {
         }
 
         System.out.println( edad<18 ? "Menor de edad" : "Mayor de edad" );
+
+
+
 
 
 
