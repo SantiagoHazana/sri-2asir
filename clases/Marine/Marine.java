@@ -15,9 +15,13 @@ public class Marine {
         float a = (float) (5d/3); // Cast
 
         String nombre = "Marina";
-        Double num = 5.5;
+        Double num1 = 5.5;
 
+        int[] numeros = {3, 4, 6, 7, 4, 5};
 
+        for (int num : numeros) {
+            System.out.println(num);
+        }
 
 
     }
