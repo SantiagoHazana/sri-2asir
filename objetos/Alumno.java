@@ -1,34 +1,28 @@
 package objetos;
-
-public class Alumno {
-    String nombre;
-    String apellido;
-    int yearMatriculacion;
+public class Alumno extends Persona{
     int id;
-    String grupo;
+    String curso;
 
-    public String getNombre() {
-        return nombre;
+    public Alumno(String nombre, String apellido, int id) {
+        super(nombre, apellido);
+        this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public Alumno(String nombre, String apellido, int edad, int id) {
+        super(nombre, apellido, edad);
+        this.id = id;
     }
 
-    public String getApellido() {
-        return apellido;
+    public Alumno(String nombre, String apellido, int edad, int id, String curso){
+        super(nombre, apellido, edad);
+        this.id = id;
+        this.curso = curso;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public int getYearMatriculacion() {
-        return yearMatriculacion;
-    }
-
-    public void setYearMatriculacion(int yearMatriculacion) {
-        this.yearMatriculacion = yearMatriculacion;
+    public Alumno(String nombre, String apellido, int id, String curso){
+        super(nombre, apellido);
+        this.id = id;
+        this.curso = curso;
     }
 
     public int getId() {
@@ -39,11 +33,15 @@ public class Alumno {
         this.id = id;
     }
 
-    public String getGrupo() {
-        return grupo;
+    public String getCurso() {
+        return curso;
     }
 
-    public void setGrupo(String grupo) {
-        this.grupo = grupo;
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String toString(){
+        return String.format("Alumno [Nombre: %10s, Apellido: %10s, Edad: %3d, Id: %d, Curso: %s]", getNombre(), getApellido(), getEdad(), id, curso);
     }
 }
