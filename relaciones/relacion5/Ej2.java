@@ -5,8 +5,20 @@ import java.io.*;
 public class Ej2 {
 
     public static void main(String[] args) {
-        String nombreArchivo = "cesar.txt";
-        String nombreArchivoCifrado = "cifrado.txt";
+        String nombreArchivo = "";
+        String nombreArchivoCifrado = "";
+        if (args.length==0 || args.length>2){
+            System.out.println("Por favor ingrese uno o dos parametros");
+            System.exit(0);
+        }else if (args.length==1){
+            nombreArchivo = args[0];
+            nombreArchivoCifrado = "cifrado.txt";
+        }else{
+            nombreArchivo = args[0];
+            nombreArchivoCifrado = args[1];
+        }
+
+
         RandomAccessFile abierto = null;
         RandomAccessFile cifrado = null;
         int desplazamiento = 5;
@@ -14,7 +26,7 @@ public class Ej2 {
             abierto = new RandomAccessFile(nombreArchivo, "r");
             cifrado = new RandomAccessFile(nombreArchivoCifrado, "rw");
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("No se encontro alguno de los ficheros");
         }
 
         char caracter;
