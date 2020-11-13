@@ -2,9 +2,6 @@ package objetos;
 
 public class PersonaTest {
     public static void main(String[] args) {
-        Persona[] clase2Asir = new Persona[3];
-
-
         System.out.printf("El numero de Personas creadas es: %d\n", Persona.getCountPersonas());
         Persona santiago = new Persona("Santiago", "Hazaña", 25);
         Persona marine = new Persona("Marina", "Moreno");
@@ -43,12 +40,24 @@ public class PersonaTest {
 
         System.out.println("\n---------------Array de Personas----------------\n");
 
+        Persona[] clase2Asir = new Persona[6];
+
         clase2Asir[0] = paco; // profesor
         clase2Asir[1] = santi; // alumno
         clase2Asir[2] = marine; // persona
+        clase2Asir[3] = santiago; // persona
+        clase2Asir[4] = rosalia; // profesor
+        clase2Asir[5] = sara; // persona
 
+        //Hecho con for
         for (int i = 0; i < clase2Asir.length; i++) {
             System.out.println(clase2Asir[i]);
         }
+
+        // Hecho con foreach
+        for (Persona persona:clase2Asir) {
+            System.out.println(persona);
+        }
+
     }
 }
