@@ -13,18 +13,23 @@ public class Ej2 {
         }else if (args.length==1){
             nombreArchivo = args[0];
             nombreArchivoCifrado = "cifrado.txt";
+            File f = new File(nombreArchivo);
+            if (!f.exists()){
+                System.out.println("El fichero no existe");
+                System.exit(0);
+            }
         }else{
             nombreArchivo = args[0];
             nombreArchivoCifrado = args[1];
         }
 
 
-        RandomAccessFile abierto = null;
-        RandomAccessFile cifrado = null;
+        RandomAccessFile origen = null;
+        RandomAccessFile destino = null;
         int desplazamiento = 5;
         try {
-            abierto = new RandomAccessFile(nombreArchivo, "r");
-            cifrado = new RandomAccessFile(nombreArchivoCifrado, "rw");
+            origen = new RandomAccessFile(nombreArchivo, "r");
+            destino = new RandomAccessFile(nombreArchivoCifrado, "rw");
         } catch (FileNotFoundException e) {
             System.out.println("No se encontro alguno de los ficheros");
         }
@@ -33,8 +38,8 @@ public class Ej2 {
         boolean endOfFile = false;
         do {
             try {
-                caracter = (char) abierto.readByte();
-                cifrado.writeByte(cifradoCesar(caracter, desplazamiento));
+                caracter = (char) origen.readByte();
+                destino.writeByte(cifradoCesar(caracter, desplazamiento));
             }catch (EOFException e){
                 endOfFile = true;
             } catch (IOException e) {
