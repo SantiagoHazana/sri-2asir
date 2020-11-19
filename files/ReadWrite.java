@@ -67,7 +67,6 @@ public class ReadWrite {
             }
         }
 
-
         if(f.exists()) {
             try {
                 file = new RandomAccessFile(args[1], "rw");
