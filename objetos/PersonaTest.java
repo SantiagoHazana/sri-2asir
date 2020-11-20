@@ -1,7 +1,11 @@
 package objetos;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class PersonaTest {
     public static void main(String[] args) {
+        /*
         System.out.printf("El numero de Personas creadas es: %d\n", Persona.getCountPersonas());
         Persona santiago = new Persona("Santiago", "Hazaña", 25);
         Persona marine = new Persona("Marina", "Moreno");
@@ -58,6 +62,68 @@ public class PersonaTest {
         for (Persona persona:clase2Asir) {
             System.out.println(persona);
         }
+        */
+
+        String[] nombres = { "Santiago", "Carlos", "Maria", "Sara", "Manuel", "Jorge", "Marina", "Pedro", "Araceli" };
+        String[] apellidos = { "Hazaña", "Perez", "Fernandez", "Moreno", "Aguilera", "Sanchez", "Perez" };
+        String[] cursos = { "1ASIR", "2ASIR", "1ESO", "2ESO", "3ESO", "4ESO" };
+        String[] departamentos = { "Informatica", "Matematicas", "Economia", "Lengua", "Ingles" };
+
+        ArrayList<Persona> personal = new ArrayList<Persona>(50);
+
+        Random random = new Random();
+
+        for (int i = 0; i < random.nextInt(51)+50; i++) {
+            int tipo = random.nextInt(3);
+            String nombre = nombres[random.nextInt(nombres.length)];
+            String apellido = apellidos[random.nextInt(apellidos.length)];
+            int edad = random.nextInt(54)+12;
+            switch (tipo){
+                case 0:
+                    personal.add(new Persona(nombre, apellido, edad));
+                    break;
+                case 1:
+                    personal.add(new Profesor(nombre, apellido, edad, random.nextInt(10000)+1000, departamentos[random.nextInt(departamentos.length)]));
+                    break;
+                case 2:
+                    personal.add(new Alumno(nombre, apellido, edad, random.nextInt(10000)+1000, cursos[random.nextInt(cursos.length)]));
+                    break;
+                default:
+                    System.out.println("Tipo incorrecto");
+                    break;
+            }
+        }
+
+        int totalAlumnos = 0;
+        int totalProfesores = 0;
+        int totalPersonas = 0;
+        Persona masViejo = personal.get(0);
+        Persona masJoven = personal.get(0);
+
+        for (Persona p : personal) {
+//            System.out.println(p);
+
+            if (p.getEdad()>masViejo.getEdad())
+                masViejo = p;
+            if (p.getEdad()<masJoven.getEdad())
+                masJoven = p;
+
+            if (p instanceof Alumno){
+                totalAlumnos++;
+                Alumno al = (Alumno) p;
+                if (al.getCurso().equals("1ASIR") || al.getCurso().equals("2ASIR") )
+                    System.out.println(al);
+            }
+
+            else if (p instanceof Profesor)
+                totalProfesores++;
+            else
+                totalPersonas++;
+        }
+
+        System.out.printf("En total hay %d, de los cuales hay %d Alumnos, %d Profesores, %d Personas\n", personal.size(), totalAlumnos, totalProfesores, totalPersonas);
+        System.out.printf("Mas viejo: %s\n", masViejo);
+        System.out.printf("Mas joven: %s\n", masJoven);
 
     }
 }

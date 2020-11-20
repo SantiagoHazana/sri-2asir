@@ -10,8 +10,8 @@ public class Profesor extends Persona {
         this.nrp = nrp;
     }
 
-    public Profesor(String nombre, String apellido, int nrp, String departamento) {
-        super(nombre, apellido);
+    public Profesor(String nombre, String apellido, int edad, int nrp, String departamento) {
+        super(nombre, apellido, edad);
         this.nrp = nrp;
         this.dpto = departamento;
     }
