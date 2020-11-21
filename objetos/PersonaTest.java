@@ -1,6 +1,7 @@
 package objetos;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class PersonaTest {
@@ -73,11 +74,13 @@ public class PersonaTest {
 
         Random random = new Random();
 
+        // Cargamos aleatoriamente 50-100 personas
         for (int i = 0; i < random.nextInt(51)+50; i++) {
             int tipo = random.nextInt(3);
             String nombre = nombres[random.nextInt(nombres.length)];
             String apellido = apellidos[random.nextInt(apellidos.length)];
             int edad = random.nextInt(54)+12;
+
             switch (tipo){
                 case 0:
                     personal.add(new Persona(nombre, apellido, edad));
@@ -85,15 +88,13 @@ public class PersonaTest {
                 case 1:
                     personal.add(new Profesor(nombre, apellido, edad, random.nextInt(10000)+1000, departamentos[random.nextInt(departamentos.length)]));
                     break;
-                case 2:
-                    personal.add(new Alumno(nombre, apellido, edad, random.nextInt(10000)+1000, cursos[random.nextInt(cursos.length)]));
-                    break;
                 default:
-                    System.out.println("Tipo incorrecto");
+                    personal.add(new Alumno(nombre, apellido, edad, random.nextInt(10000)+1000, cursos[random.nextInt(cursos.length)]));
                     break;
             }
         }
 
+        // Sacar total de personas, total de alumnos y total de profesores
         int totalAlumnos = 0;
         int totalProfesores = 0;
         int totalPersonas = 0;
@@ -108,15 +109,22 @@ public class PersonaTest {
             if (p.getEdad()<masJoven.getEdad())
                 masJoven = p;
 
+            // pregunto si la persona que lei del arraylist (p) es una instancia de alumno, pregunto si es un alumno
             if (p instanceof Alumno){
                 totalAlumnos++;
-                Alumno al = (Alumno) p;
+                // Sacar solo los alumnos que cursen 1 o 2 de asir
+                Alumno al = (Alumno) p; // variable momentanea porque Persona no tiene curso, entonces hago cast de p para convertirlo en alumno
                 if (al.getCurso().equals("1ASIR") || al.getCurso().equals("2ASIR") )
                     System.out.println(al);
             }
 
-            else if (p instanceof Profesor)
+            else if (p instanceof Profesor){
                 totalProfesores++;
+                // Mostrar los profesores de informatica
+                Profesor profesor = (Profesor) p;
+                if (profesor.getDpto().equals("Informatica"))
+                    System.out.println(profesor);
+            }
             else
                 totalPersonas++;
         }

@@ -12,6 +12,7 @@ public class DaniSanchez{
     char letra = '5'; // los caracteres se ponen con comillas simples
     boolean aprobadoDani = false;
     String nombre = "Daniel"; // el String va con comillas dobles
+    String apellido = "Sanchez";
 
     // Esto es un metodo
     public int suma(){
@@ -56,6 +57,7 @@ public class DaniSanchez{
         // Otra manera de sumarlos
         resultado = suma3(num, num2);// cuando llamamos a suma3(), le pasamos 5 y 3.
         System.out.println("La suma de los dos numeros es: " + resultado );
+
     }
 
 }
