@@ -10,9 +10,29 @@ public class Casa {
         String[] lugares={"Salón","Cocina","Baño","Dormitorio 1","Dormitorio 2","Dormitorio 3","Entrada","Balcón"};
 
         for (int i = 0; i < 10; i++) {
-            bombillas.add(new Bombilla(lugares[(int)(Math.random()*lugares.length)], false));
+            int state = (int)(Math.random()*2);
+            bombillas.add(new Bombilla(lugares[(int)(Math.random()*lugares.length)], state==0));
         }
 
+    }
+
+    public float consumoTotal(){
+        float consumo = 0;
+        for (Bombilla bom :
+                bombillas) {
+            consumo += bom.coste();
+        }
+        return consumo;
+    }
+
+    public String toString(){
+        StringBuilder res = new StringBuilder();
+        res.append("Casa[ ");
+        for (int i = 0; i < bombillas.size(); i++) {
+            res.append("Bombilla ").append(i).append(": ").append(bombillas.get(i).toString()).append(", \n");
+        }
+        res.append("Consumo : ").append(consumoTotal()).append("€");
+        return res.toString();
     }
 
 }

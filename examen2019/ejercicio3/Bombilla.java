@@ -11,8 +11,8 @@ public class Bombilla {
             throw new Exception("No se puede crear bombillas con sito vacio");
         this.sitio = sitio;
         this.estado = estado;
-        this.potencia = 0;
-        this.tiempo = 0;
+        this.potencia = (int)(Math.random()*50+10);
+        this.tiempo = (int)(Math.random()*100+10);
     }
 
     public Bombilla(String sitio, boolean estado, int potencia, int tiempo) throws Exception {

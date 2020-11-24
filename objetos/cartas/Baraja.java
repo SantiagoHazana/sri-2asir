@@ -1,6 +1,7 @@
 package objetos.cartas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Baraja {
 
@@ -18,12 +19,32 @@ public class Baraja {
         }
     }
 
-    public String toString(){
-        String res = "";
-        for (Carta carta : mazo) {
-            res += carta.toString() + "\n";
+    public void shuffle(){
+        Collections.shuffle(mazo);
+    }
+
+    public Carta giveCard(){
+        if (mazo.size()>0){
+            Carta carta = mazo.get(0);
+            mazo.remove(0);
+            return carta;
+        } else {
+            return null;
         }
-        return res;
+    }
+
+    public int deckSize(){
+        return mazo.size();
+    }
+
+    public String toString(){
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < mazo.size(); i++) {
+            res.append(i+1).append(". ").append(mazo.get(i)).append("     ");
+            if (i%4==0)
+                res.append("\n");
+        }
+        return res.toString();
     }
 
 }

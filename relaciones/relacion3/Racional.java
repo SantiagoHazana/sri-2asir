@@ -1,6 +1,8 @@
 package relaciones.relacion3;
 
-public class Racional {
+import java.util.Random;
+
+public class Racional implements Comparable<Racional>{
     private int numerador;
     private int denominador;
 
@@ -19,7 +21,7 @@ public class Racional {
         return String.format(" %d / %d", numerador, denominador);
     }
 
-    public float toFloat(int num){
+    public float toFloat(){
         return (float)numerador/denominador;
     }
 
@@ -43,6 +45,13 @@ public class Racional {
         return new Racional(this.numerador*racional.denominador, this.denominador*racional.numerador);
     }
 
+    public boolean equals(Object o){
+        if (!(o instanceof Racional))
+            return false;
+        Racional racional = (Racional) o;
+        return racional.numerador==this.numerador && racional.denominador==this.denominador;
+    }
+
     private int mcdEuclidesIterative(int numerador, int denominador){
         int r;
         while (denominador != 0){
@@ -51,5 +60,17 @@ public class Racional {
             numerador = r;
         }
         return numerador;
+    }
+
+    @Override
+    public int compareTo(Racional o) {
+        if (o==null) return 1;
+        float res = toFloat() - o.toFloat();
+        if (res==0)
+            return 0;
+        else if (res>0)
+            return 1;
+        else
+            return -1;
     }
 }
