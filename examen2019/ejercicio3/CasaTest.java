@@ -10,7 +10,5 @@ public class CasaTest {
             casas.add(new Casa());
             System.out.println(casas.get(i));
         }
-
     }
-
 }

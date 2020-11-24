@@ -1,4 +1,4 @@
-package objetos.cartas;
+package relaciones.relacion4.cartas;
 
 public class Carta {
     private String valor;
