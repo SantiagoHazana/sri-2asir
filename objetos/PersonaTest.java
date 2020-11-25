@@ -1,7 +1,6 @@
 package objetos;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 public class PersonaTest {
@@ -70,7 +69,7 @@ public class PersonaTest {
         String[] cursos = { "1ASIR", "2ASIR", "1ESO", "2ESO", "3ESO", "4ESO" };
         String[] departamentos = { "Informatica", "Matematicas", "Economia", "Lengua", "Ingles" };
 
-        ArrayList<Persona> personal = new ArrayList<Persona>(50);
+        ArrayList<Persona> personal = new ArrayList<>(50);
 
         Random random = new Random();
 
