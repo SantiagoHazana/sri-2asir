@@ -10,12 +10,23 @@ public class Ej2 {
         return (int) (Math.pow(num%10, 2) + sum_cuad_dig(num/10));
     }
 
+    public static int sum_cuad_dig_iter(int num){
+        int resultado = 0;
+        while (num != 0){
+            resultado += num%10 * num%10;
+            num /= 10;
+        }
+        return resultado;
+    }
+
     public static boolean feliz(int num){
-        int sumCuad = sum_cuad_dig(num);
-        for (int i = 0; i < 10; i++) {
+        ArrayList<Integer> resultados = new ArrayList<>();
+        int sumCuad = sum_cuad_dig_iter(num);
+        while (!resultados.contains(sumCuad)) {
             if (sumCuad == 1)
                 return true;
-            sumCuad = sum_cuad_dig(sumCuad);
+            resultados.add(sumCuad);
+            sumCuad = sum_cuad_dig_iter(sumCuad);
         }
         return false;
     }
@@ -32,6 +43,8 @@ public class Ej2 {
         for (Integer num : felices) {
             System.out.println(num);
         }
+
+        System.out.println("Numero de numeros felices: " + felices.size());
 
     }
 

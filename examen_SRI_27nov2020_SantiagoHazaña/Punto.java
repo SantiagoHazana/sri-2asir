@@ -2,9 +2,9 @@ package examen_SRI_27nov2020_SantiagoHazaña;
 
 public class Punto {
 
-    double x;
-    double y;
-    String color;
+    private double x;
+    private double y;
+    private String color;
 
     public Punto() {
         this.x = Math.random()*200-100;
