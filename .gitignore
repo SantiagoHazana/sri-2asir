@@ -13,10 +13,10 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
-# Generated files
+# Generated primeraEvaluacion.files
 .idea/**/contentModel.xml
 
-# Sensitive or high-churn files
+# Sensitive or high-churn primeraEvaluacion.files
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.local.xml
@@ -30,7 +30,7 @@
 .idea/**/libraries
 
 # Gradle and Maven with auto-import
-# When using Gradle or Maven with auto-import, you should exclude module files,
+# When using Gradle or Maven with auto-import, you should exclude module primeraEvaluacion.files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
 # .idea/artifacts
@@ -142,11 +142,11 @@ Temporary Items
 *.code-workspace
 
 ### VisualStudioCode Patch ###
-# Ignore all local history of files
+# Ignore all local history of primeraEvaluacion.files
 .history
 
 ### Windows ###
-# Windows thumbnail cache files
+# Windows thumbnail cache primeraEvaluacion.files
 Thumbs.db
 Thumbs.db:encryptable
 ehthumbs.db
@@ -161,7 +161,7 @@ ehthumbs_vista.db
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-# Windows Installer files
+# Windows Installer primeraEvaluacion.files
 *.cab
 *.msi
 *.msix
