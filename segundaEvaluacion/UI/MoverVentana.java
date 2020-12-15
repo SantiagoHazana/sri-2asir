@@ -1,6 +1,7 @@
 package segundaEvaluacion.UI;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MoverVentana extends JFrame {
 
@@ -10,7 +11,7 @@ public class MoverVentana extends JFrame {
     private JButton bajarButton;
     private JPanel panel1;
 
-    public MoverVentana(String title){
+    public MoverVentana(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,10 +20,10 @@ public class MoverVentana extends JFrame {
         this.pack();
         this.setBounds(300, 300, 300, 300);
 
-        subirButton.addActionListener(e -> this.setBounds(this.getX(), this.getY()-5, 300, 300));
-        bajarButton.addActionListener(e -> this.setBounds(this.getX(), this.getY()+5, 300, 300));
-        derechaButton.addActionListener(e -> this.setBounds(this.getX()+5, this.getY(), 300, 300));
-        izquierdaButton.addActionListener(e -> this.setBounds(this.getX()-5, this.getY(), 300, 300));
+        subirButton.addActionListener(e -> this.setBounds(this.getX(), this.getY() - 5, 300, 300));
+        bajarButton.addActionListener(e -> this.setBounds(this.getX(), this.getY() + 5, 300, 300));
+        derechaButton.addActionListener(e -> this.setBounds(this.getX() + 5, this.getY(), 300, 300));
+        izquierdaButton.addActionListener(e -> this.setBounds(this.getX() - 5, this.getY(), 300, 300));
 
     }
 

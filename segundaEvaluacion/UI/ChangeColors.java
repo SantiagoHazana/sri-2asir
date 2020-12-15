@@ -6,14 +6,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
-public class ChangeColors extends JFrame{
+public class ChangeColors extends JFrame {
     private JLabel blue;
     private JLabel red;
     private JLabel Green;
     private JLabel yellow;
     private JPanel panel1;
 
-    public ChangeColors(String title){
+    public ChangeColors(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,7 +76,7 @@ public class ChangeColors extends JFrame{
         panel1.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
-                panel1.setBackground(new Color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256)));
+                panel1.setBackground(new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256)));
             }
         });
     }
@@ -89,4 +89,5 @@ public class ChangeColors extends JFrame{
         ChangeColors frame = new ChangeColors("Cambiar Color");
         frame.setVisible(true);
     }
+
 }

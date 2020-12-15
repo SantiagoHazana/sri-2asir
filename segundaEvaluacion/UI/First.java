@@ -1,6 +1,7 @@
 package segundaEvaluacion.UI;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class First extends JFrame {
     private JPanel panel1;

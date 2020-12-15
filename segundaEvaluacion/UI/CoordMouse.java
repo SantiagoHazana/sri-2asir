@@ -1,22 +1,20 @@
 package segundaEvaluacion.UI;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.font.TextAttribute;
 import java.util.Map;
 
-public class CoordMouse extends JFrame{
+public class CoordMouse extends JFrame {
     private JPanel panel1;
     private JLabel label;
     private JCheckBox boldCheckBox;
     private JCheckBox italicCheckBox;
     private JCheckBox underlineCheckBox;
 
-    public CoordMouse(String title){
+    public CoordMouse(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,23 +28,23 @@ public class CoordMouse extends JFrame{
             @Override
             public void mouseMoved(MouseEvent e) {
                 super.mouseMoved(e);
-                label.setText("Raton: ("+e.getX()+", "+e.getY()+")");
+                label.setText("Raton: (" + e.getX() + ", " + e.getY() + ")");
             }
         });
 
         boldCheckBox.addChangeListener(e -> {
-                label.setFont(label.getFont().deriveFont(label.getFont().getStyle()^Font.BOLD));
+            label.setFont(label.getFont().deriveFont(label.getFont().getStyle() ^ Font.BOLD));
         });
         italicCheckBox.addChangeListener(e -> {
-            label.setFont(label.getFont().deriveFont(label.getFont().getStyle()^Font.ITALIC));
+            label.setFont(label.getFont().deriveFont(label.getFont().getStyle() ^ Font.ITALIC));
         });
         underlineCheckBox.addChangeListener(e -> {
             Font font = label.getFont();
-            if (underlineCheckBox.isSelected()){
+            if (underlineCheckBox.isSelected()) {
                 Map attributes = font.getAttributes();
                 attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
                 label.setFont(font.deriveFont(attributes));
-            }else{
+            } else {
                 label.setFont(new Font(font.getName(), font.getStyle(), font.getSize()));
             }
         });
@@ -56,4 +54,5 @@ public class CoordMouse extends JFrame{
         CoordMouse frame = new CoordMouse("Pos Mouse");
         frame.setVisible(true);
     }
+
 }
