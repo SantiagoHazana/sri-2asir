@@ -9,7 +9,7 @@ import java.awt.event.MouseMotionAdapter;
 public class ChangeColors extends JFrame {
     private JLabel blue;
     private JLabel red;
-    private JLabel Green;
+    private JLabel green;
     private JLabel yellow;
     private JPanel panel1;
 
@@ -47,7 +47,7 @@ public class ChangeColors extends JFrame {
                 resetBackgroundColor();
             }
         });
-        Green.addMouseListener(new MouseAdapter() {
+        green.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);

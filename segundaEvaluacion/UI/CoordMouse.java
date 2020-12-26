@@ -23,7 +23,6 @@ public class CoordMouse extends JFrame {
         this.pack();
         this.setBounds(300, 300, 400, 300);
 
-
         panel1.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -54,5 +53,4 @@ public class CoordMouse extends JFrame {
         CoordMouse frame = new CoordMouse("Pos Mouse");
         frame.setVisible(true);
     }
-
 }

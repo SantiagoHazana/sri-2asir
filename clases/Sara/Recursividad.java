@@ -59,14 +59,22 @@ public class Recursividad {
 
     }
 
+    public static void imprimir1aN(int n){
+        imprimir1aN(n, 1);
+    }
+
+    private static void imprimir1aN(int n, int count){
+        if (count > n)
+            return;
+
+        System.out.println(count);
+        imprimir1aN(n, count+1);
+    }
+
     public static void main(String[] args) {
 //        System.out.println(fibonacciRec(4));
 
-        int n = 5;
-
-        for (long i = 1; i <= n; i++){
-            System.out.printf("%d! = %s = %d\n", i, multiplicationsString(i), factorialRec(i));
-        }
+        imprimir1aN(10);
 
 //        imprimirNumeros(n);
     }
