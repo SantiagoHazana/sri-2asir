@@ -19,6 +19,7 @@ public class Abundantes {
             if (abundante(i))
                 abun.add(i);
         }
+
         for ( Integer num : abun ) {
             System.out.println(num);
         }
