@@ -39,5 +39,17 @@ public class Rectangle extends Shape {
         this.height = height;
     }
 
-    
+    public double getArea(){
+        return width*height;
+    }
+
+    public double getPerimeter(){
+        return width*2+height*2;
+    }
+
+    public String toString(){
+        return String.format("Un rectangulo de color %s y %s, con ancho %.2f y alto %.2f", getColor(), isFilled()?"relleno":"no relleno", width, height);
+    }
+
+
 }

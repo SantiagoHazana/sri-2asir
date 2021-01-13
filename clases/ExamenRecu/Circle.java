@@ -14,7 +14,7 @@ public class Circle extends Shape{
         this.radius = radius;
     }
 
-    public Circle(double radius, String color, boolean filled) {
+    public Circle(String color, boolean filled, double radius) {
         super(color, filled);
         this.radius = radius;
     }
