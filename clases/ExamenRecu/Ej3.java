@@ -30,6 +30,8 @@ public class Ej3 {
         }
 
         figuras.forEach(System.out::println);
+
+//        figuras.forEach(shape -> System.out.println(shape));
     }
 
 }
