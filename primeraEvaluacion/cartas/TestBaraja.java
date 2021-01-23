@@ -33,13 +33,13 @@ public class TestBaraja { // el controlador
         System.out.println(baraja);
 
         // Termina la mano
-        for (Player p : jugadores) {
-            if (p.gano) {
-                p.win(30);
-            } else {
-                p.lose();
-            }
-        }
+//        for (Player p : jugadores) {
+//            if (p.gano) {
+//                p.win(30);
+//            } else {
+//                p.lose();
+//            }
+//        }
 
 //        System.out.println("------------------------------Jugador 1------------------------------");
 //        player1.forEach(carta -> System.out.println(carta));
