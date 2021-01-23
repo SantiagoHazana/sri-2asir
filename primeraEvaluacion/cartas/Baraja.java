@@ -7,10 +7,17 @@ public class Baraja {
 
     private ArrayList<Carta> mazo;
 
-    public Baraja(){
+    public Baraja(boolean espanola){
         mazo = new ArrayList<>();
-        String[] palos = { "Oros", "Copas", "Espadas", "Bastos" };
-        String[] valores = { "As", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "Sota", "Caballo", "Rey" };
+        String[] palos;
+        String[] valores;
+        if (espanola){
+            palos = new String[]{"Oros", "Copas", "Espadas", "Bastos"};
+            valores = new String[]{"As", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "Sota", "Caballo", "Rey"};
+        }else{
+            palos = new String[]{"Corazones", "Copas", "Espadas", "Bastos"};
+            valores = new String[]{"As", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "Sota", "Caballo", "Rey"};
+        }
 
         for (String palo : palos) {
             for (String valor : valores) {
