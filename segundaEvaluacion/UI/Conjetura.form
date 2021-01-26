@@ -18,6 +18,8 @@
           <grid row="0" column="3" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <focusCycleRoot value="false"/>
+          <focusTraversalPolicyProvider value="false"/>
           <text value="Show"/>
         </properties>
       </component>
@@ -27,7 +29,11 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <focusCycleRoot value="false"/>
+          <focusTraversalPolicyProvider value="true"/>
+          <nextFocusableComponent value="8cdd0"/>
+        </properties>
       </component>
       <component id="8cdd0" class="javax.swing.JTextField" binding="textFieldMax">
         <constraints>
@@ -35,7 +41,11 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <focusCycleRoot value="false"/>
+          <focusTraversalPolicyProvider value="true"/>
+          <nextFocusableComponent value="29a8a"/>
+        </properties>
       </component>
       <component id="4bf29" class="javax.swing.JLabel">
         <constraints>
@@ -62,7 +72,9 @@
         <children>
           <component id="84c9a" class="javax.swing.JTextArea" binding="textAreaResult">
             <constraints/>
-            <properties/>
+            <properties>
+              <editable value="false"/>
+            </properties>
           </component>
         </children>
       </scrollpane>

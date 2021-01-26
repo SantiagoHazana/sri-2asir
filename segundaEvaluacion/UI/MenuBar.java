@@ -1,5 +1,7 @@
 package segundaEvaluacion.UI;
 
+import say.swing.JFontChooser;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -18,7 +20,12 @@ public class MenuBar extends JFrame {
     private JMenuItem openItem;
     private JMenuItem saveItem;
     private JMenuItem saveAsItem;
+    private JMenuItem fontItem;
     private JTextArea textArea;
+    private JPanel bottomBarPanel;
+    private JLabel sizeLabel;
+    private JLabel linesLabel;
+    private JLabel charCountLabel;
 
     private String pathToSaveFile;
 
@@ -118,6 +125,16 @@ public class MenuBar extends JFrame {
 
         });
         fileMenu.add(saveAsItem);
+
+        fontItem = new JMenuItem("Change Font");
+        fontItem.addActionListener(e -> {
+            JFontChooser jFontChooser = new JFontChooser();
+            jFontChooser.showDialog(this);
+
+            textArea.setFont(jFontChooser.getSelectedFont());
+
+        });
+        toolsMenu.add(fontItem);
 
         changeBackgroundColorItem = new JMenuItem("Background Color");
         changeBackgroundColorItem.addActionListener(e -> {
