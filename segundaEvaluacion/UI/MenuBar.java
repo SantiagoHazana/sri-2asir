@@ -89,7 +89,7 @@ public class MenuBar extends JFrame {
                 if (file != null){
                     FileWriter saveFile = new FileWriter(file);
                     saveFile.write(textArea.getText());
-                    this.setTitle("Archivo guardado");
+                    this.setTitle("Archivo guardado en: " + file);
                     saveFile.close();
                 }
 
@@ -112,16 +112,15 @@ public class MenuBar extends JFrame {
                 if (file != null){
                     FileWriter saveFile = new FileWriter(file + ".txt");
                     saveFile.write(textArea.getText());
-                    this.setTitle(file + ".txt");
+                    this.setTitle("Archivo creado en: " + file + ".txt");
                     pathToSaveFile = file + ".txt";
                     saveFile.close();
-
+                    saveItem.setEnabled(true);
                 }
 
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
-            saveItem.setEnabled(true);
 
         });
         fileMenu.add(saveAsItem);

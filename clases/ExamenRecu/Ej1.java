@@ -3,20 +3,20 @@ package clases.ExamenRecu;
 public class Ej1 {
 
     public static String conjetura(int num){
-        String res = "";
+        StringBuilder res = new StringBuilder();
         int pasos = 0;
         while (num!=1){
             pasos++;
             if (num%2==0){
-                res += num + "(par) -> ";
+                res.append(num).append("(par) -> ");
                 num/=2;
             }else{
-                res += num + "(impar) -> ";
+                res.append(num).append("(impar) -> ");
                 num = num * 3 + 1;
             }
         }
-        res += num + "(" + pasos + " pasos)\n";
-        return res;
+        res.append(num).append("(").append(pasos).append(" pasos)\n");
+        return res.toString();
     }
 
     public static void main(String[] args) {
