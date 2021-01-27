@@ -18,6 +18,18 @@ public class Player {
         mano.add(carta);
     }
 
+    public int calculateHandPoints() {
+        int points = 0;
+        for (Carta c : mano) {
+            if (c.getValor()==1) {
+                // preguntar si vale 11 o 1
+            }
+            // chequear tambien si son dos cartas iniciales iguales
+            points += c.getValor();
+        }
+        return points;
+    }
+
     public void apuesta(int num){
         if (fichas-num<0){
             System.out.println("No tienes mas fichas");

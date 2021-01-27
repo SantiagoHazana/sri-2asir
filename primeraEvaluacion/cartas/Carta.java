@@ -11,8 +11,40 @@ public class Carta {
         this.palo = palo;
     }
 
-    public String getValor() {
-        return valor;
+    public int getValor() {
+        switch (valor){
+            case "As":
+                return 1;
+            case "Dos":
+                return 2;
+            case "Tres":
+                return 3;
+            case "Cuatro":
+                return 4;
+            case "Cinco":
+                return 5;
+            case "Seis":
+                return 6;
+            case "Siete":
+                return 7;
+            case "Ocho":
+                return 8;
+            case "Nueve":
+                return 9;
+            case "Diez":
+            case "Q":
+            case "J":
+            case "K":
+                return 10;
+            case "Sota":
+                return 11;
+            case "Caballo":
+                return 12;
+            case "Rey":
+                return 13;
+            default:
+                return 0;
+        }
     }
 
     public String getPalo() {
