@@ -40,18 +40,18 @@ public class Baraja {
         }
     }
 
-    public int deckSize(){
-        return mazo.size();
-    }
-
-    public String toString(){
-        StringBuilder res = new StringBuilder();
-        for (int i = 0; i < mazo.size(); i++) {
-            res.append(i+1).append(". ").append(mazo.get(i)).append("     ");
-            if (i%4==0)
-                res.append("\n");
-        }
-        return res.toString();
-    }
+//    public int deckSize(){
+//        return mazo.size();
+//    }
+//
+//    public String toString(){
+//        StringBuilder res = new StringBuilder();
+//        for (int i = 0; i < mazo.size(); i++) {
+//            res.append(i+1).append(". ").append(mazo.get(i)).append("     ");
+//            if (i%4==0)
+//                res.append("\n");
+//        }
+//        return res.toString();
+//    }
 
 }

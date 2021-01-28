@@ -1,16 +1,15 @@
 package primeraEvaluacion.cartas;
 
-import java.util.ArrayList;
 
 public class Game {
     Baraja baraja;
-    ArrayList<Carta> manoDealer;
     Player jugador;
+    Dealer dealer;
 
     public Game(){
         baraja = new Baraja(false);
-        manoDealer = new ArrayList<>();
-        jugador = new Player(1);
+        jugador = new Player();
+        dealer = new Dealer();
         startGame();
     }
 
@@ -20,10 +19,8 @@ public class Game {
         jugador.getCarta(baraja.giveCard());
         jugador.getCarta(baraja.giveCard());
 
-        manoDealer.add(baraja.giveCard());
-        manoDealer.add(baraja.giveCard());
-
-
+        dealer.getCarta(baraja.giveCard());
+        dealer.getCarta(baraja.giveCard());
 
     }
 
@@ -32,13 +29,32 @@ public class Game {
         if (jugador.calculateHandPoints()>21)
             jugador.lose();
     }
-    private void giveCardToDealer(){
-        manoDealer.add(baraja.giveCard());
-    }
 
     public void restart(){
         baraja = new Baraja(false);
-        jugador.win(300);
+        // opciones de ganar
+        if (jugador.calculateHandPoints()==21){
+            jugador.win((int) (jugador.apuesta + (jugador.apuesta)*1.5));
+            dealer.reset();
+        }else if (jugador.calculateHandPoints()>21){
+            jugador.lose();
+            dealer.reset();
+        }else if (jugador.calculateHandPoints() == dealer.calculateHandPoints()){
+            jugador.win(jugador.apuesta);
+            dealer.reset();
+        }else{
+            jugador.win(jugador.apuesta*2);
+            dealer.reset();
+        }
+        startGame();
+    }
+
+    public int playerPoints(){
+        return jugador.calculateHandPoints();
+    }
+
+    public static void main(String[] args) {
+        new Game();
     }
 
 }

@@ -5,13 +5,12 @@ public class Player {
     ArrayList<Carta> mano;
     int fichas;
     int apuesta;
-    int playerNumber;
     boolean gano;
+    boolean hasAce = false;
 
-    public Player(int playerNumber){
+    public Player(){
         mano = new ArrayList<>();
         this.fichas = 100;
-        this.playerNumber = playerNumber;
     }
 
     public void getCarta(Carta carta){
@@ -22,10 +21,14 @@ public class Player {
         int points = 0;
         for (Carta c : mano) {
             if (c.getValor()==1) {
-                // preguntar si vale 11 o 1
+                points+=10;
+                hasAce = true;
             }
-            // chequear tambien si son dos cartas iniciales iguales
             points += c.getValor();
+        }
+        if (hasAce && points>21){
+            points -= 10;
+            hasAce = false;
         }
         return points;
     }
@@ -36,7 +39,7 @@ public class Player {
             return;
         }
         fichas -= num;
-        apuesta = num;
+        apuesta += num;
     }
 
     public void win(int fichas){
@@ -49,7 +52,7 @@ public class Player {
         reset();
     }
 
-    private void reset(){
+    void reset(){
         mano.clear();
     }
 

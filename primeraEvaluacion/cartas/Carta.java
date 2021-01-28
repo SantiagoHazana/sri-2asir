@@ -51,24 +51,26 @@ public class Carta {
         return palo;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s de %s", valor, palo);
-    }
+    // No hace falta para blackjack
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Carta carta = (Carta) o;
-        return Objects.equals(valor, carta.valor) &&
-                Objects.equals(palo, carta.palo);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(valor, palo);
-    }
+//    @Override
+//    public String toString() {
+//        return String.format("%s de %s", valor, palo);
+//    }
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Carta carta = (Carta) o;
+//        return Objects.equals(valor, carta.valor) &&
+//                Objects.equals(palo, carta.palo);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(valor, palo);
+//    }
 
 
 
