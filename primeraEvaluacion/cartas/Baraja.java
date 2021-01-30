@@ -19,9 +19,16 @@ public class Baraja {
             valores = new String[]{"As", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "J", "Q", "K"};
         }
 
+        String[] imagenes = {
+                "",
+                "",
+                ""
+        };
+        int contCarta = 0;
         for (String palo : palos) {
             for (String valor : valores) {
-                mazo.add(new Carta(valor, palo));
+                mazo.add(new Carta(valor, palo, imagenes[contCarta]));
+                contCarta++;
             }
         }
     }

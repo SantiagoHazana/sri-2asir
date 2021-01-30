@@ -1,14 +1,19 @@
 package primeraEvaluacion.cartas;
 
-import java.util.Objects;
 
 public class Carta {
     private String valor;
     private String palo;
+    private String imagenURL;
 
-    public Carta(String valor, String palo) {
+    public Carta(String valor, String palo, String imagenURL) {
         this.valor = valor;
         this.palo = palo;
+        this.imagenURL = imagenURL;
+    }
+
+    public String getImagenURL() {
+        return imagenURL;
     }
 
     public int getValor() {

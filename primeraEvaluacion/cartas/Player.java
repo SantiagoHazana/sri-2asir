@@ -7,6 +7,7 @@ public class Player {
     int apuesta;
     boolean gano;
     boolean hasAce = false;
+    boolean playing;
 
     public Player(){
         mano = new ArrayList<>();
@@ -52,6 +53,10 @@ public class Player {
         reset();
     }
 
+    public ArrayList<Carta> getMano() {
+        return mano;
+    }
+
     void reset(){
         mano.clear();
     }
@@ -59,5 +64,9 @@ public class Player {
     @Override
     public String toString() {
         return String.format("Jugador%d:");
+    }
+
+    public boolean isPlaying() {
+        return playing;
     }
 }
