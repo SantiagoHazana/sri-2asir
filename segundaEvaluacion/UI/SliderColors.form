@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="segundaEvaluacion.UI.SliderColors">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="d3e68" class="javax.swing.JSlider" binding="redSlider">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <majorTickSpacing value="15"/>
+          <maximum value="255"/>
+          <minimum value="3"/>
+          <paintLabels value="true"/>
+          <paintTicks value="true"/>
+          <value value="120"/>
+          <valueIsAdjusting value="true"/>
+        </properties>
+      </component>
+      <component id="17604" class="javax.swing.JSlider" binding="greenSlider">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <majorTickSpacing value="15"/>
+          <maximum value="255"/>
+          <minimum value="3"/>
+          <paintLabels value="true"/>
+          <paintTicks value="true"/>
+          <value value="120"/>
+        </properties>
+      </component>
+      <component id="7b954" class="javax.swing.JSlider" binding="blueSlider">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <majorTickSpacing value="15"/>
+          <maximum value="255"/>
+          <minorTickSpacing value="3"/>
+          <paintLabels value="true"/>
+          <paintTicks value="true"/>
+          <value value="120"/>
+        </properties>
+      </component>
+      <component id="cff27" class="javax.swing.JLabel" binding="redLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Red"/>
+        </properties>
+      </component>
+      <component id="f0047" class="javax.swing.JLabel" binding="greenLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Green"/>
+        </properties>
+      </component>
+      <component id="87ffd" class="javax.swing.JLabel" binding="blueLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="blue"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
