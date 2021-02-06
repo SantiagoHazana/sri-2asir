@@ -1,7 +1,6 @@
 package segundaEvaluacion.db;
 
 import java.sql.*;
-import java.util.function.DoubleBinaryOperator;
 
 public class FirstConnection {
 

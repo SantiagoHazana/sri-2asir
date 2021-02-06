@@ -9,6 +9,7 @@ public class First extends JFrame {
     private JButton cambiarTextoButton;
     private JLabel texto;
     private JButton exitButton;
+    private JTable table1;
 
     public First(String title){
         super(title);
@@ -20,11 +21,12 @@ public class First extends JFrame {
         this.setBounds(300, 300, 450, 300);
         cambiarTextoButton.addActionListener(e -> texto.setText(textField1.getText()));
         exitButton.addActionListener(e -> System.exit(0));
+
+        table1.getComponentAt(0, 0);
     }
 
     public static void main(String[] args) {
         First frame = new First("Primer ventana");
         frame.setVisible(true);
     }
-
 }
