@@ -1,10 +1,13 @@
 package segundaEvaluacion.UI;
 
+import sun.plugin2.ipc.windows.WindowsEvent;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -43,7 +46,7 @@ public class ShowTablesDB extends JFrame {
 
         showClientsButton.addActionListener(e -> {
             try {
-                DefaultTableModel tableModel = new DefaultTableModel(0, 5);
+                DefaultTableModel tableModel = new DefaultTableModel(new Object[]{"DNI", "Nombre", "Apellido", "Ciudad", "Fecha nacimiento"}, 0);
 
                 ResultSet resultSet = db.createStatement().executeQuery("select * from clientes");
                 while (resultSet.next()){
@@ -56,13 +59,23 @@ public class ShowTablesDB extends JFrame {
                     };
                     tableModel.addRow(data);
                 }
-                clientsTable.setTableHeader(new JTableHeader(new DefaultTableColumnModel()));
                 clientsTable.setModel(tableModel);
 
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         });
+
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(WindowEvent winEvt){
+                try {
+                    db.close();
+                } catch (SQLException throwables) {
+                    System.out.println("Can not close database connection");
+                }
+            }
+        });
+
     }
 
     public static void main(String[] args) {

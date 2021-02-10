@@ -56,6 +56,12 @@ public class FirstConnection {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        try {
+            db.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 }
