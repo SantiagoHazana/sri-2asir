@@ -4,9 +4,11 @@ import javax.swing.*;
 
 public class GameView extends JFrame {
     JPanel panel1;
+    private JPanel dealerPanel;
+    private JPanel playerPanel;
+    private JButton button1;
     private JButton buttonGivePlayerCard;
     private JLabel playerPointsLabel;
-    private JLabel carta;
     Baraja baraja;
     Player jugador;
     Dealer dealer;
@@ -15,7 +17,7 @@ public class GameView extends JFrame {
         super(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(panel1);
-        this.setResizable(false);
+        this.setResizable(true);
         this.pack();
         this.setBounds(300, 300, 900, 600);
         startGame();
@@ -34,20 +36,10 @@ public class GameView extends JFrame {
         });
     }
 
-    public void renderCards(){
-//        panel1.removeAll(); // sacar todas las cartas y volver a renderizarlas
-        for (Carta c : jugador.getMano()) {
-            // JLabel newCard = new JLabel("");
-            carta.setText("");
-            carta.setIcon(new ImageIcon(c.getImagenURL()));
-        }
-    }
-
     private void startGame() {
         baraja = new Baraja(false);
         jugador = new Player();
         dealer = new Dealer();
-        startGame();
         baraja.shuffle();
 
         jugador.getCarta(baraja.giveCard());
@@ -58,16 +50,49 @@ public class GameView extends JFrame {
 
     }
 
-    public void giveCardToPlayer(){
-        jugador.getCarta(baraja.giveCard());
-        if (jugador.calculateHandPoints()>21)
-            jugador.lose();
+    public void renderCard(String imageUrl, boolean renderPlayerCard){
+        JLabel card = new JLabel("");
+        card.setIcon(new ImageIcon(imageUrl));
+        if (renderPlayerCard){
+            playerPanel.add(card);
+            playerPanel.revalidate();
+            playerPanel.repaint();
+        }else{
+            dealerPanel.add(card);
+            dealerPanel.revalidate();
+            dealerPanel.repaint();
+        }
     }
 
-    public int checkHandEnd(){
+    public void giveCardToPlayer(){
+        Carta carta = baraja.giveCard();
+        renderCard(carta.getImagenURL(), true);
+        jugador.getCarta(carta);
+        updatePoints();
+        if (jugador.calculateHandPoints()>21){
+            jugador.lose();
+        }
+
+    }
+
+    public void giveCardToDealer() throws InterruptedException {
+        Carta carta = baraja.giveCard();
+        renderCard(carta.getImagenURL(), false);
+        dealer.getCarta(carta);
+        updatePoints();
+        Thread.sleep(2000);
+        checkHandEnd();
+    }
+
+    private void updatePoints() {
+        playerPointsLabel.setText("Puntos: " + jugador.calculateHandPoints());
+        // actualizar puntos dealer
+    }
+
+    public int checkHandEnd() throws InterruptedException {
         while(dealer.calculateHandPoints() < jugador.calculateHandPoints()) {
             if (dealer.calculateHandPoints() < 16) {
-                dealer.getCarta(baraja.giveCard());
+                giveCardToDealer();
             } else if (jugador.calculateHandPoints() < dealer.calculateHandPoints()) {
                 dealer.getCarta(baraja.giveCard());
             } else if(jugador.calculateHandPoints() == dealer.calculateHandPoints()) {
@@ -96,9 +121,6 @@ public class GameView extends JFrame {
             dealer.reset();
         }
 
-    }
-    public void giveCardToDealer() {
-        dealer.getCarta(baraja.giveCard());
     }
 
     public static void main(String[] args) {
