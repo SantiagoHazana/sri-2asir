@@ -48,8 +48,9 @@ public class MiniForm extends JFrame {
 
         hoursSlider.addChangeListener(e -> hoursSliderLabel.setText(String.valueOf(hoursSlider.getValue())));
         generateButton.addActionListener(e -> {
-            String res = String.format("Su sistema operativo preferido es %s\n su/s aficion/es son %s %s %s \n y sus horas dedicadas a PC son %d",
+            String res = String.format("Su sistema operativo preferido es %s\n %s %s %s %s \n y sus horas dedicadas a PC son %d",
                     osGroup.getSelection().getActionCommand(),
+                    (programmingCheckBox.isSelected() || graphicsDesignCheckBox.isSelected() || administrationCheckBox.isSelected()) ? "su/s aficion/es son":"",
                     programmingCheckBox.isSelected() ? "Programacion,":"",
                     graphicsDesignCheckBox.isSelected() ? "Diseño grafico,":"",
                     administrationCheckBox.isSelected() ? "Administracion,":"",
@@ -78,6 +79,8 @@ public class MiniForm extends JFrame {
             for (String s : hobbies) {
                 hobby+=s+"\t";
             }
+            // Forma fea y no correcta
+//            db.createStatement().executeQuery("insert into mini_form(os, hobby, hours) value (" + os + "," + hobby + "," + hours +" )");
             PreparedStatement preparedStatement = db.prepareStatement("insert into mini_form(os, hobby, hours) value (?, ?, ?)");
             preparedStatement.setString(1, os);
             preparedStatement.setString(2, hobby);

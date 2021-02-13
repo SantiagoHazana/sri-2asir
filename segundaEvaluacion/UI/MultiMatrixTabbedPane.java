@@ -36,14 +36,15 @@ public class MultiMatrixTabbedPane extends JFrame {
                 {String.valueOf((int)(Math.random()*10+1)),String.valueOf((int)(Math.random()*10+1)),String.valueOf((int)(Math.random()*10+1))},
                 {String.valueOf((int)(Math.random()*10+1)),String.valueOf((int)(Math.random()*10+1)),String.valueOf((int)(Math.random()*10+1))}},
                 new Object[] {"A", "B", "C"}));
-        additionTable.setModel(new DefaultTableModel(new Object[][]{{0,0,0}, {0,0,0}, {0,0,0}}, new Object[] {"A", "B", "C"}));
-        multiplicationTable.setModel(new DefaultTableModel(new Object[][]{{0,0,0}, {0,0,0}, {0,0,0}}, new Object[] {"A", "B", "C"}));
+        additionTable.setModel(new DefaultTableModel(new Object[][]{{"0","0","0"}, {"0","0","0"}, {"0","0","0"}}, new Object[] {"A", "B", "C"}));
+        multiplicationTable.setModel(new DefaultTableModel(new Object[][]{{"0","0","0"}, {"0","0","0"}, {"0","0","0"}}, new Object[] {"A", "B", "C"}));
         firstTable.setGridColor(Color.black);
         secondTable.setGridColor(Color.black);
         multiplicationTable.setGridColor(Color.black);
         additionTable.setGridColor(Color.black);
 
         tabbedPane1.addChangeListener(e -> {
+            multiplicationTable.setModel(new DefaultTableModel(new Object[][]{{"0","0","0"}, {"0","0","0"}, {"0","0","0"}}, new Object[] {"A", "B", "C"}));
             TableModel first = firstTable.getModel();
             TableModel second = secondTable.getModel();
             for (int i = 0; i < 3; i++) {
@@ -53,7 +54,15 @@ public class MultiMatrixTabbedPane extends JFrame {
             }
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    multiplicationTable.getModel().setValueAt(Integer.parseInt((String) first.getValueAt(i, j)) * Integer.parseInt((String)second.getValueAt(i, j)), i, j);;
+                    for (int k = 0; k < 3; k++) {
+                        multiplicationTable.getModel().setValueAt(String.valueOf(
+                                Integer.parseInt((String) multiplicationTable.getValueAt(i,j)) +
+                                        Integer.parseInt((String)firstTable.getValueAt(i, k)) *
+                                                Integer.parseInt((String)secondTable.getValueAt(k, j))),
+                                i,
+                                j
+                        );
+                    }
                 }
             }
 
