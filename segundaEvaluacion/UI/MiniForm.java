@@ -74,14 +74,14 @@ public class MiniForm extends JFrame {
         int res = -1;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            db = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "");
+            db = DriverManager.getConnection("jdbc:mysql://localhost/forms", "root", "");
             String hobby = "";
             for (String s : hobbies) {
                 hobby+=s+"\t";
             }
             // Forma fea y no correcta
 //            db.createStatement().executeQuery("insert into mini_form(os, hobby, hours) value (" + os + "," + hobby + "," + hours +" )");
-            PreparedStatement preparedStatement = db.prepareStatement("insert into mini_form(os, hobby, hours) value (?, ?, ?)");
+            PreparedStatement preparedStatement = db.prepareStatement("insert into mini_form(os, hobbies, hours) value (?, ?, ?)");
             preparedStatement.setString(1, os);
             preparedStatement.setString(2, hobby);
             preparedStatement.setInt(3, hours);
