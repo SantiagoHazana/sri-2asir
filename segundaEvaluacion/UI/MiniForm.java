@@ -5,11 +5,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.*;
 
 public class MiniForm extends JFrame {
 
@@ -27,6 +24,9 @@ public class MiniForm extends JFrame {
     private JSlider hoursSlider;
     private JLabel hoursSliderLabel;
     private JButton generateButton;
+    private JButton commonOSButton;
+    private JButton commonHobbyButton;
+    private JButton averageHoursButton;
     private ButtonGroup osGroup;
 
     public MiniForm(String title){
@@ -67,6 +67,105 @@ public class MiniForm extends JFrame {
 
             insertFormResult(osGroup.getSelection().getActionCommand(), hobbies, hoursSlider.getValue());
         });
+        commonOSButton.addActionListener(e -> {
+            ArrayList<String> os = getAllOS();
+            int countMacOS = Collections.frequency(os, "MacOS");
+            int countLinux = Collections.frequency(os, "Linux");
+            int countWindows = Collections.frequency(os, "Windows");
+            TreeMap<Integer, String> map = new TreeMap<>(Collections.reverseOrder());
+            map.put(countMacOS, "MacOS");
+            map.put(countLinux, "Linux");
+            map.put(countWindows, "Windows");
+            String res = "";
+
+            for (Integer count : map.keySet()) {
+                res += map.get(count) + " aparece " + count + " veces\n";
+            }
+
+            JOptionPane.showMessageDialog(this, res, "Muestra SO", JOptionPane.INFORMATION_MESSAGE);
+
+        });
+        commonHobbyButton.addActionListener(e -> {
+            ArrayList<String> hobbies = getAllHobbies();
+            int countProg = Collections.frequency(hobbies, "Programacion");
+            int countDesign = Collections.frequency(hobbies, "Diseño grafico");
+            int countAdmin = Collections.frequency(hobbies, "Administracion");
+            TreeMap<Integer, String> map = new TreeMap<>(Collections.reverseOrder());
+            map.put(countProg, "Programacion");
+            map.put(countDesign, "Diseño grafico");
+            map.put(countAdmin, "Administracion");
+            String res = "";
+
+            for (Integer count : map.keySet()) {
+                res += map.get(count) + " aparece " + count + " veces\n";
+            }
+
+            JOptionPane.showMessageDialog(this, res, "Muestra Aficiones", JOptionPane.INFORMATION_MESSAGE);
+
+        });
+        averageHoursButton.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this, String.format("Las horas promedio de uso de PC es: %.2f", getAVGHours()), "Horas promedio", JOptionPane.INFORMATION_MESSAGE);
+
+        });
+    }
+
+    private double getAVGHours() {
+        Connection db;
+        double res = -1;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            db = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "");
+
+            ResultSet resultSet = db.createStatement().executeQuery("select avg(hours) as avg from mini_form");
+            resultSet.next();
+            res = resultSet.getDouble("avg");
+
+            db.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    private ArrayList<String> getAllHobbies(){
+        Connection db;
+        ArrayList<String> hobbies = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            db = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "");
+
+            ResultSet resultSet = db.createStatement().executeQuery("select hobby from mini_form");
+
+            while (resultSet.next()){
+                String[] result = resultSet.getString("hobby").split("\t");
+                hobbies.addAll(Arrays.asList(result));
+            }
+            db.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return hobbies;
+    }
+
+    private ArrayList<String> getAllOS() {
+        Connection db;
+        ArrayList<String> os = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            db = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "");
+
+            ResultSet resultSet = db.createStatement().executeQuery("select os from mini_form");
+
+            while (resultSet.next()){
+                os.add(resultSet.getString("os"));
+            }
+
+            db.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return os;
+
     }
 
     private int insertFormResult(String os, ArrayList<String> hobbies, int hours){
@@ -74,14 +173,14 @@ public class MiniForm extends JFrame {
         int res = -1;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            db = DriverManager.getConnection("jdbc:mysql://localhost/forms", "root", "");
+            db = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "");
             String hobby = "";
             for (String s : hobbies) {
                 hobby+=s+"\t";
             }
             // Forma fea y no correcta
 //            db.createStatement().executeQuery("insert into mini_form(os, hobby, hours) value (" + os + "," + hobby + "," + hours +" )");
-            PreparedStatement preparedStatement = db.prepareStatement("insert into mini_form(os, hobbies, hours) value (?, ?, ?)");
+            PreparedStatement preparedStatement = db.prepareStatement("insert into mini_form(os, hobby, hours) value (?, ?, ?)");
             preparedStatement.setString(1, os);
             preparedStatement.setString(2, hobby);
             preparedStatement.setInt(3, hours);
