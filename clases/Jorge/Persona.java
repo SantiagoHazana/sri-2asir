@@ -8,7 +8,7 @@ public class Persona {
     int edad;
     float altura;
 
-    // Constructor, se encarga de inicializar nuestra clase/objecto
+    // Constructor, se encarga de inicializar nuestra clase/objeto
     public Persona(String nombre, String apellido){
         this.nombre = nombre; // la palabra reservada 'this' hace referencia a los atributos de la clase
         this.apellido = apellido;
@@ -26,10 +26,20 @@ public class Persona {
         return this.edad;
     }
 
+    public float getAltura() {
+        return altura;
+    }
+
+    public void setAltura(float altura) {
+        this.altura = altura;
+    }
+
     public String getNombreCompleto(){
         return nombre + " " + apellido;
     }
 
-    // crear los metodos para cambiar (setEdad) y pedir la altura (getAltura)
+    public String toString(){
+        return "Persona[nombre: " + nombre + ", apellido: " + apellido + ", edad: " + edad + "]";
+    }
 
 }

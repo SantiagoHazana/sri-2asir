@@ -15,6 +15,9 @@ public class UsaPersona {
 
         // Crees a tu familia (padre, madre, hermano y vos) y muestres la informacion de cada uno
 
+        System.out.println(jorge);
+        System.out.println(santi);
+
 
     }
 
