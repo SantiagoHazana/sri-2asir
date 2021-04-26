@@ -49,7 +49,7 @@ public class Ej2 {
 
     }
 
-    public static char cifradoCesar(char caracter, int despl) {
+    private static char cifradoCesar(char caracter, int despl) {
         despl = despl % 26;
         if (caracter >= 'a' && caracter <= 'z') {
             if (caracter + despl > 'z') {

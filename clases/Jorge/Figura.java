@@ -2,8 +2,8 @@ package clases.Jorge;
 
 public class Figura {
 
-    String color;
-    double area;
+    private String color;
+    private double area;
 
     public Figura(String color) {
         this.color = color;
@@ -27,9 +27,6 @@ public class Figura {
     }
 
     public String toString() {
-        return "Figura{" +
-                "color='" + color + '\'' +
-                ", area=" + area +
-                '}';
+        return "Figura{" + "color='" + color + '\'' + ", area=" + area + '}';
     }
 }
