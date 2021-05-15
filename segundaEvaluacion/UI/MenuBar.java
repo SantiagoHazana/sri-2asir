@@ -1,6 +1,5 @@
 package segundaEvaluacion.UI;
 
-import say.swing.JFontChooser;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -127,10 +126,10 @@ public class MenuBar extends JFrame {
 
         fontItem = new JMenuItem("Change Font");
         fontItem.addActionListener(e -> {
-            JFontChooser jFontChooser = new JFontChooser();
-            jFontChooser.showDialog(this);
-
-            textArea.setFont(jFontChooser.getSelectedFont());
+//            JFontChooser jFontChooser = new JFontChooser();
+//            jFontChooser.showDialog(this);
+//
+//            textArea.setFont(jFontChooser.getSelectedFont());
 
         });
         toolsMenu.add(fontItem);

@@ -1,10 +1,7 @@
 package segundaEvaluacion.UI;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.sql.*;
 import java.util.*;
 
@@ -28,6 +25,7 @@ public class MiniForm extends JFrame {
     private JButton commonHobbyButton;
     private JButton averageHoursButton;
     private ButtonGroup osGroup;
+    private Connection conexionBases;
 
     public MiniForm(String title){
         super(title);
@@ -48,9 +46,9 @@ public class MiniForm extends JFrame {
 
         hoursSlider.addChangeListener(e -> hoursSliderLabel.setText(String.valueOf(hoursSlider.getValue())));
         generateButton.addActionListener(e -> {
-            String res = String.format("Su sistema operativo preferido es %s\n %s %s %s %s \n y sus horas dedicadas a PC son %d",
+            String res = String.format("Su sistema operativo preferido es %s %s %s %s %s \n y sus horas dedicadas a PC son %d",
                     osGroup.getSelection().getActionCommand(),
-                    (programmingCheckBox.isSelected() || graphicsDesignCheckBox.isSelected() || administrationCheckBox.isSelected()) ? "su/s aficion/es son":"",
+                    (programmingCheckBox.isSelected() || graphicsDesignCheckBox.isSelected() || administrationCheckBox.isSelected()) ? "\nsu/s aficion/es son":"",
                     programmingCheckBox.isSelected() ? "Programacion,":"",
                     graphicsDesignCheckBox.isSelected() ? "Diseño grafico,":"",
                     administrationCheckBox.isSelected() ? "Administracion,":"",
@@ -106,6 +104,33 @@ public class MiniForm extends JFrame {
         averageHoursButton.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, String.format("Las horas promedio de uso de PC es: %.2f", getAVGHours()), "Horas promedio", JOptionPane.INFORMATION_MESSAGE);
 
+        });
+
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(WindowEvent winEvt){
+                String res = "";
+                try {
+                    Statement statement =  conexionBases.createStatement();
+                    ResultSet resultSet = statement.executeQuery("select count(os) as linux from mini_form where os='Linux'");
+                    resultSet.next();
+                    int countLinux = resultSet.getInt("linux");
+                    res += "Linux: " + countLinux;
+                    resultSet = statement.executeQuery("select count(os) as windows from mini_form where os='Windows'");
+                    resultSet.next();
+                    int countWin = resultSet.getInt("windows");
+                    res += "Windows: " + countWin;
+                    resultSet = statement.executeQuery("select count(os) as macos from mini_form where os='MacOS'");
+                    resultSet.next();
+                    int countMac = resultSet.getInt("macos");
+                    res += "MacOS: " + countMac;
+
+
+
+                    conexionBases.close();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
         });
     }
 
@@ -190,6 +215,8 @@ public class MiniForm extends JFrame {
             System.out.println(e.getMessage());
         }
         return res;
+
+
     }
 
     public static void main(String[] args) {

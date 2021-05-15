@@ -1,11 +1,8 @@
 package segundaEvaluacion.UI;
 
-import sun.plugin2.ipc.windows.WindowsEvent;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
